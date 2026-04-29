@@ -1,0 +1,193 @@
+/* =============================================
+   PORTFOLIO v3 — Vervia Website Showcase
+   ============================================= */
+
+.portfolio { padding: var(--space-3xl) var(--content-padding); }
+.portfolio__inner { max-width: var(--max-width); margin: 0 auto; }
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* ---- Work Card ---- */
+.work-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-spring);
+}
+
+.work-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-accent);
+  box-shadow: var(--glow-cyan), var(--shadow-card);
+}
+
+/* Browser frame */
+.work-card__browser {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.work-card__browser-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.work-card__dots {
+  display: flex;
+  gap: 5px;
+}
+
+.work-card__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.4;
+}
+
+.work-card__dots span:first-child { background: #ef4444; opacity: 0.6; }
+.work-card__dots span:nth-child(2) { background: #f59e0b; opacity: 0.6; }
+.work-card__dots span:nth-child(3) { background: #10b981; opacity: 0.6; }
+
+.work-card__url-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.work-card__url-bar svg { color: var(--accent-cyan); opacity: 0.5; flex-shrink: 0; }
+
+/* Screen/Image */
+.work-card__screen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.work-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.work-card:hover .work-card__image {
+  transform: scale(1.05);
+}
+
+.work-card__hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.work-card:hover .work-card__hover-overlay { opacity: 1; }
+
+.work-card__view-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transform: translateY(6px);
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.work-card:hover .work-card__view-label { transform: translateY(0); }
+
+/* Info */
+.work-card__info { padding: var(--space-lg); }
+
+.work-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+
+.work-card__category {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.work-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--duration-normal) ease;
+}
+
+.work-card__link:hover { color: var(--accent-cyan-light); }
+
+.work-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.work-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.work-card__tech-tag {
+  padding: 3px 10px;
+  background: var(--accent-cyan-dim);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  border-radius: var(--radius-full);
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--accent-cyan-light);
+}
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-lg); background: rgba(0,0,0,0.85); backdrop-filter: blur(24px); animation: fadeIn 250ms ease-out both; }
+.lightbox__content { position: relative; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; background: var(--bg-card-solid); border-radius: var(--radius-2xl); border: 1px solid var(--border-medium); box-shadow: var(--shadow-elevated), 0 0 80px rgba(6,182,212,0.1); animation: scaleIn 400ms var(--ease-out-expo) both; }
+.lightbox__content::-webkit-scrollbar { display: none; }
+.lightbox__close { position: absolute; top: var(--space-md); right: var(--space-md); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); z-index: 10; transition: all var(--duration-fast) var(--ease-spring); }
+.lightbox__close:hover { background: rgba(6,182,212,0.2); transform: scale(1.1) rotate(90deg); }
+.lightbox__image-wrapper { width: 100%; aspect-ratio: 16/10; overflow: hidden; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; }
+.lightbox__image { width: 100%; height: 100%; object-fit: cover; }
+.lightbox__info { padding: var(--space-lg) var(--space-xl) var(--space-xl); }
+.lightbox__category { display: inline-block; font-size: 0.625rem; font-weight: 700; color: var(--accent-cyan-light); text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; background: var(--accent-cyan-dim); border: 1px solid rgba(6,182,212,0.15); border-radius: var(--radius-full); margin-bottom: var(--space-sm); }
+.lightbox__title { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); }
+.lightbox__description { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; }
+
+/* Responsive */
+@media (max-width: 639px) {
+  .portfolio__grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,18 @@
+/* FLOATING CTA v3 — Vervia */
+.floating-cta { position: fixed; bottom: var(--space-xl); right: var(--space-xl); z-index: 900; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-sm); opacity: 0; transform: translateY(40px) scale(0.5); pointer-events: none; transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo); }
+.floating-cta--visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+.floating-cta__button { width: 54px; height: 54px; border-radius: var(--radius-lg); background: var(--gradient-primary); color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(6,182,212,0.35); transition: all var(--duration-normal) var(--ease-spring); animation: breathe 3s ease-in-out infinite; }
+.floating-cta__button:hover { transform: scale(1.12); box-shadow: 0 8px 32px rgba(6,182,212,0.5); animation: none; }
+.floating-cta__button--active { animation: none; background: var(--bg-card-solid); border: 1px solid var(--border-medium); box-shadow: var(--shadow-card); border-radius: 50%; }
+.floating-cta__button--active:hover { box-shadow: var(--shadow-elevated); transform: scale(1.08) rotate(90deg); }
+
+.floating-cta__menu { display: flex; flex-direction: column; gap: var(--space-xs); animation: fadeInUp 300ms var(--ease-out-expo) both; }
+.floating-cta__option { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-md); border-radius: var(--radius-lg); font-size: 0.8125rem; font-weight: 600; white-space: nowrap; transition: all var(--duration-normal) var(--ease-spring); }
+.floating-cta__option:hover { transform: translateX(-6px) scale(1.03); }
+.floating-cta__option--wa { background: linear-gradient(135deg, #25d366, #128c7e); color: white; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
+.floating-cta__option--wa:hover { box-shadow: 0 8px 32px rgba(37,211,102,0.45); }
+.floating-cta__option--email { background: var(--bg-card-solid); color: var(--text-primary); border: 1px solid var(--border-medium); box-shadow: var(--shadow-card); }
+.floating-cta__option--email:hover { box-shadow: var(--shadow-elevated); border-color: var(--accent-cyan); }
+
+@media (max-width: 639px) { .floating-cta { bottom: var(--space-lg); right: var(--space-lg); } .floating-cta__button { width: 50px; height: 50px; } }
