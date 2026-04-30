@@ -1,24 +1,24 @@
 import { profileData } from '../data/profileData';
 import HeroSection from '../components/hero/HeroSection';
-import ProductsSection from '../components/products/ProductsSection';
-import PortfolioGrid from '../components/portfolio/PortfolioGrid';
-import ExperienceTimeline from '../components/timeline/ExperienceTimeline';
+import GallerySection from '../components/gallery/GallerySection';
+import BlogSection from '../components/blog/BlogSection';
 import FloatingCTA from '../components/cta/FloatingCTA';
 import Footer from '../components/footer/Footer';
 
 /**
- * BiolinkPage v3 — Vervia-style full-width layout
+ * BiolinkPage v3 — Vervia-style layout with custom galleries
  */
 export default function BiolinkPage() {
-  const { hero, products, portfolio, experience, cta, footer } = profileData;
+  const { hero, canva, inkscape, photography, blog, cta, footer } = profileData;
 
   return (
     <div className="biolink-page">
       <main>
         <HeroSection hero={hero} />
-        <ProductsSection products={products} />
-        <PortfolioGrid portfolio={portfolio} />
-        <ExperienceTimeline experience={experience} />
+        <GallerySection data={canva} variant="canva" />
+        <GallerySection data={inkscape} variant="inkscape" />
+        <GallerySection data={photography} variant="photography" />
+        <BlogSection data={blog} />
       </main>
       <Footer footer={footer} />
       <FloatingCTA cta={cta} />

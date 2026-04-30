@@ -45,12 +45,21 @@ export default function HeroSection({ hero }) {
           <SocialIcons socials={hero.socials} />
         </div>
 
-        {/* Right side — profile image */}
+        {/* Right side — visual & links */}
         <div className="hero__visual animate-scale-in delay-3">
           <div className="hero__image-frame">
             <div className="hero__image-glow" />
-            <img src={hero.photo} alt={hero.name} className="hero__photo" width={320} height={320} />
+            <img src={hero.photo} alt={hero.name} className="hero__photo" width={280} height={360} />
             <div className="hero__image-border" />
+          </div>
+          
+          {/* Vertical Links next to image */}
+          <div className="hero__links">
+            {hero.links?.map((link, index) => (
+              <a key={index} href={link.url} className="hero__link-btn">
+                {link.text}
+              </a>
+            ))}
           </div>
         </div>
       </div>
